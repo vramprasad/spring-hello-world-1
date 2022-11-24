@@ -12,36 +12,6 @@ pool:
    - agent.name -equals RPLocalMac
 
 stages:
-
-- stage: Unit_Test
-  displayName: 'Unit Test'
-  jobs:
-  - job: UnitTest
-    displayName: 'Unit Testing'
-    pool: RPLocalPool
-    steps:
-      - task : Maven@3
-        inputs:
-          mavenPomFile: 'pom.xml'
-          mavenOptions: '-Xmx3072m'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '11'
-          jdkArchitectureOption: 'x64'
-          publishJUnitResults: true
-          testResultsFiles: '**/surefire-reports/TEST-*.xml'
-          goals: 'test'
-
-- stage: Code_Coverage
-  displayName: 'Code Coverage'
-  jobs:
-  - job: Code
-    displayName: 'Code Coverage'
-    pool: RPLocalPool
-    steps:
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'JaCoCo'
-        summaryFileLocation: '$(Build.ArtifactStagingDirectory)/target/site/jacoco/*.xml'
 - stage: Build
   displayName: 'Code Build'
   jobs:
@@ -57,7 +27,7 @@ stages:
         jdkVersionOption: '11'
         jdkArchitectureOption: 'x64'
         publishJUnitResults: false
-        goals: 'package jacoco:report'
+        goals: 'package test jacoco:report'
 - stage: UploadArtifact
   displayName: 'Upload Artifacts'
   jobs:
