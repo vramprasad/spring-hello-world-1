@@ -56,4 +56,15 @@ stages:
       inputs:
         codeCoverageTool: 'JaCoCo'
         summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/*.xml'
-
+- stage: UploadArtifact
+  displayName: 'Upload Artifacts'
+  jobs:
+  - job: Upload
+    displayName: 'Upload JAR'
+    pool: RPLocalPool
+    steps:
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/target/*.jar'
+        artifact: 'JAR'
+        publishLocation: 'pipeline'
