@@ -36,6 +36,13 @@ stages:
         SourceFolder: '$(Build.SourcesDirectory)/target'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'  
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish JaCoCo Results'
+      inputs:
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: '$(Build.ArtifactStagingDirectory)/site/jacoco/*.xml'
+    
+
     
     
 
