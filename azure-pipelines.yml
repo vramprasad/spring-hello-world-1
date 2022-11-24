@@ -13,8 +13,9 @@ pool:
 
 stages:
 - stage: Build
+  displayName: 'Stage - Build'
   jobs:
-  - job: Build_Job
+  - job: Build
     displayName: 'Build'
     pool: RPLocalPool
     steps:
@@ -28,8 +29,9 @@ stages:
         publishJUnitResults: false
         goals: 'package'
 - stage: Test
+  displayName: 'Stage - Unit Test'
   jobs:
-  - job: Unit_Test
+  - job: UnitTest
     displayName: 'Unit Testing'
     pool: RPLocalPool
     steps:
