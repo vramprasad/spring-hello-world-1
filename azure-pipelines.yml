@@ -28,6 +28,10 @@ stages:
         jdkArchitectureOption: 'x64'
         publishJUnitResults: false
         goals: 'package test jacoco:report'
+  - job: CopyFiles
+    displayName: 'Copy'
+    pool: RPLocalPool
+    steps:
     - task: CopyFiles@2
       displayName: 'Copy Files'
       inputs:
