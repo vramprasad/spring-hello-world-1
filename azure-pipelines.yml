@@ -55,5 +55,5 @@ stages:
     - task: PublishCodeCoverageResults@1
       inputs:
         codeCoverageTool: 'JaCoCo'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/target'
-        additionalCodeCoverageFiles: '$(System.DefaultWorkingDirectory)/**/*.exec'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/*.xml'
+
