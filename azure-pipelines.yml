@@ -20,22 +20,23 @@ stages:
     pool: RPLocalPool
     steps:
     - task: Maven@3
+      displayName: 'Maven - Build and Test'
       inputs:
         mavenPomFile: 'pom.xml'
         mavenOptions: '-Xmx3072m'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '11'
         jdkArchitectureOption: 'x64'
-        publishJUnitResults: false
+        publishJUnitResults: true
         goals: 'package test jacoco:report'
-  - job: CopyFiles
-    displayName: 'Copy'
-    dependsOn: 'Build'
-    pool: RPLocalPool
-    steps:
+
     - task: CopyFiles@2
       displayName: 'Copy Files'
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/target'
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'  
+    
+    
+
+    
