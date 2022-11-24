@@ -16,7 +16,7 @@ stages:
   displayName: 'Code Build'
   jobs:
   - job: Build
-    displayName: 'Build'
+    displayName: 'Build Home Loans Application'
     pool: RPLocalPool
     steps:
     - task: Maven@3
@@ -42,6 +42,14 @@ stages:
         codeCoverageTool: 'JaCoCo'
         summaryFileLocation: '$(Build.ArtifactStagingDirectory)/site/jacoco/*.xml'
         reportDirectory: '$(Build.ArtifactStagingDirectory)/site/jacoco/'
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish JAR file'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/*.jar'
+        artifact: 'drop'
+        publishLocation: 'pipeline'
+    
+
     
 
     
