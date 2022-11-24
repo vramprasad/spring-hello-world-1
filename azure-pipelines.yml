@@ -50,6 +50,6 @@ stages:
     steps:
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/target/spring-hello-world-1.0.1.jar'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
