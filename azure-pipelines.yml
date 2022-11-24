@@ -28,6 +28,19 @@ stages:
         jdkArchitectureOption: 'x64'
         publishJUnitResults: false
         goals: 'package test jacoco:report'
+
+- stage: PublishCodeCoverageResult
+  displayName: 'PublishCodeCoverageResult Artifacts'
+  jobs:
+  - job: PublishCodeCoverageResult
+    displayName: 'PublishCodeCoverageResult'
+    pool: RPLocalPool
+    steps:
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: '$(Build.SourcesDirectory)/target/site/jacoco/*.xml'
+
 - stage: UploadArtifact
   displayName: 'Upload Artifacts'
   jobs:
@@ -37,6 +50,6 @@ stages:
     steps:
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.SourcesDirectory)/target/*.jar'
+        targetPath: '$(Build.SourcesDirectory)/target/spring-hello-world-1.0.1.jar'
         artifact: 'JAR'
         publishLocation: 'pipeline'
