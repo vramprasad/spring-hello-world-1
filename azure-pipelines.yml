@@ -22,7 +22,7 @@ stages:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m -Dmaven.test.skip=true'
+        mavenOptions: '-Xmx3072m'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '11'
         jdkArchitectureOption: 'x64'
@@ -37,6 +37,6 @@ stages:
     steps:
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)/target/*.jar'
+        targetPath: '$(Build.SourcesDirectory)/target/*.jar'
         artifact: 'JAR'
         publishLocation: 'pipeline'
