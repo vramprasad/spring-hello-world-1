@@ -30,6 +30,7 @@ stages:
         goals: 'package test jacoco:report'
   - job: CopyFiles
     displayName: 'Copy'
+    dependsOn: 'Build'
     pool: RPLocalPool
     steps:
     - task: CopyFiles@2
