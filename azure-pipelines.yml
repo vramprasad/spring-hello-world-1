@@ -27,7 +27,7 @@ stages:
         jdkVersionOption: '11'
         jdkArchitectureOption: 'x64'
         publishJUnitResults: false
-        goals: 'package'
+        goals: 'install jacoco:report'
 - stage: Unit_Test
   displayName: 'Unit Test'
   jobs:
