@@ -48,8 +48,8 @@ stages:
     displayName: 'Upload JAR'
     pool: RPLocalPool
     steps:
-    - task: PublishPipelineArtifact@1
+    - task: PublishBuildArtifacts@1
       inputs:
-        targetPath: '$(Build.SourcesDirectory)/target/spring-hello-world-1.0.1.jar'
-        artifact: 'JAR'
-        publishLocation: 'pipeline'
+        PathtoPublish: '$(Build.SourcesDirectory)/target/spring-hello-world-1.0.1.jar'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
