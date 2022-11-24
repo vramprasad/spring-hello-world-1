@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.prasad.demo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
@@ -12,9 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class DemoApplicationTest {
 
 	@Autowired
-	private HomeController controller;
+	private DemoController controller;
 
 	@Test
 	public void contextLoads() throws Exception {
 		assertThat(controller).isNotNull();
 	}
+}
