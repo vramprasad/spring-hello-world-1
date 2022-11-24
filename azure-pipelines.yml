@@ -28,7 +28,7 @@ stages:
         jdkArchitectureOption: 'x64'
         publishJUnitResults: false
         goals: 'package'
-- stage: Test
+- stage: Unit_Test
   displayName: 'Stage - Unit Test'
   jobs:
   - job: UnitTest
@@ -45,7 +45,8 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           goals: 'test'
-- stage: Code Coverage
+- stage: Code_Coverage
+  displayName: 'Stage - Code Coverage'
   jobs:
   - job: Code
     displayName: 'Code Coverage'
