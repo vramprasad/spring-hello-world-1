@@ -45,7 +45,7 @@ stages:
     - task: PublishPipelineArtifact@1
       displayName: 'Publish JAR file'
       inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)/*.jar'
+        targetPath: '$(Build.ArtifactStagingDirectory)/spring-hello-world-1.0.1.jar'
         artifact: 'drop'
         publishLocation: 'pipeline'
     
