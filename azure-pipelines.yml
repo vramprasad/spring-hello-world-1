@@ -15,6 +15,7 @@ stages:
 - stage: Build
   jobs:
   - job: Build_Job
+    displayName: 'Build'
     pool: RPLocalPool
     steps:
     - task: Maven@3
@@ -29,6 +30,7 @@ stages:
 - stage: Test
   jobs:
   - job: Unit_Test
+    displayName: 'Unit Testing'
     pool: RPLocalPool
     steps:
       - task : Maven@3
@@ -41,4 +43,13 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           goals: 'test'
-          
+- stage: Code Coverage
+  jobs:
+  - job: Code
+    displayName: 'Code Coverage'
+    pool: RPLocalPool
+    steps:
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: '$(System.DefaultWorkingDirectory)/target'
