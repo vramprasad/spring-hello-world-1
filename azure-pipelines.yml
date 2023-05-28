@@ -7,7 +7,7 @@ trigger:
 - none
 
 pool:
-  name: RPLocalPoolHP
+  name: RPLocalPool
   demands:
    - agent.name -equals RPLocalWin
 
