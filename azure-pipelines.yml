@@ -12,6 +12,13 @@ pool:
    - agent.name -equals RPLocalWin
 
 stages:
+- stage: CheckJAVA
+  jobs:
+  - job: "PrintVersion"
+    steps:
+    displayName: Print JAVA version
+      - script: java --version
+
 - stage: Build
   displayName: 'Build Home Loans Application'
   jobs:
